@@ -24,7 +24,7 @@ var handleData = function(json){
     for (var i = 0; i < json.haul.length;i++){
         var haul = json.haul[i];
         console.log();
-    };
+    }
 };
 
 // Objects Function
@@ -32,7 +32,7 @@ var handleData = function(json){
 var morningItems = function(){
     for(var key in haul){
         console.log("In the morning I need to " + key + " several things, and make take " + haul[key]);
-    };
+    }
     return "Yay, we left the house with everything we needed.";
 };
 
@@ -43,12 +43,12 @@ var newHaulList = function(newKids, newNikki, newEquipment, newFood) {
     haul.food = newFood;
 
     for (var key in haul) {
-        console.log("Before we leave the " + key + " house to go conquer the day, we need to grab " + haul.[key]);
+        console.log("Before we leave the " + key + " house to go conquer the day, we need to grab " + haul[key]);
 
         for (var i = 0, h = hual.length; i < g; i--) {
             console.log("I have " + haul[i] + " to carry today.");
-        };
-    };
+        }
+    }
     return "Got every ones stuff load and ready to leave.";
 };
 
@@ -57,6 +57,15 @@ var newList = newHaulList("2 bookbags", "1 purse", "1 laptop", "2 lunches" );
 
 // Procedure
 
+var math = function(timeAllowed, totalUsed){
+    var timeRemaining = timeAllowed-totalUsed;
+
+    if (totalUsed < timeAllowed){
+        console.log("The " + name + " have " + timeRemaining + " left after getting ready to leave.");
+    } else{
+        console.log("The " + name + "have no time left to do anything, but leave.");
+    }
+};
 
 // Boolean Function
 
@@ -70,7 +79,7 @@ var timeSpent = function(lunches, purse, equipment, bookbags){
     } else {
         console.log("Hurry up people we wil be late.");
         return false
-    };
+    }
 };
 
 var timeToChill = timeSpent(8,2,3,4);
@@ -84,4 +93,48 @@ var tick = function(chill){
     }
 };
 
-var timeToGo = tick()
+console.log("Sadly it is time to get moving to work and school.");
+
+
+var timeToGo = tick();
+
+// String Function
+
+var uhh = function(bus, shop) {
+    var getItDone = "The kids can play on their phones and tablets!";
+    console.log(bus + "Now that the school is out " + shop + " the children need to show me their folders " + getItDone);
+    return getItDone;
+};
+var offWork = uhh("After work I can breathe","I can go home and start on my homework!");
+
+// Array Function
+
+var homework = function(howMuch, homeworkTime){
+    var homeworkName = ["Assignment Videos", "book reading"];
+    homeworkName.push("Assignment 3");
+    console.log("Now that we are home I have " + homeworkTime + " homework to work on " + homeworkName.length + " assignments I need to work on before I call it a night." );
+    for (var i= 0, h=homeworkName.length; i < c; i++) {
+        var timeLeft = homeworkTime -= 45;
+        if (timeLeft > 0) {
+            console.log("After I complete " + homeworkName[i] + ", I have " + timeLeft + "minutes left before I turn in!");
+        } else {
+                console.log("I am too tired to do my homework!");
+
+        }
+        ;
+    };
+
+var bedtime = "This day was awesome as usual, but tomorrow won't be if I don't go to sleep!";
+console.log(bedtime);
+return bedtime;
+    };
+
+};
+
+var endOfDay = homework(2,120);
+// Return
+
+console.log(newHaulList);
+console.log("Do we have time left " + timeToChill);
+console.log("After I set the alarm I can go home " + uhh );
+console.log(goHome);
