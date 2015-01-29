@@ -12,9 +12,7 @@ var myLibrary = function() {
 
 //  Does a string follow a 123-456-7890 pattern like a phone number?
 
-    var validateNumber = function(){
-        var phoneNumber = prompt("Enter your phone number like this 123-456-7890.")
-    }
+
 
 //  Does a string follow an aaa@bbb.ccc pattern like an email address?
 
@@ -22,19 +20,47 @@ var myLibrary = function() {
 //  Is the string a URL? (Does it start with http: or https:?)
 
 
-//  Title-case a string (split into words, then uppercase the first letter of each word)
+//  4. Title-case a string (split into words, then uppercase the first letter of each word)
 
+    function addCaps(changeCase) {
+        String.prototype.toProperCase = function() {
+            return this.replace(/\w\S*/g, function (words){
+                return words.charAt(0).toUpperCase() + words.substr(1).toLowerCase();
+            })
+        };
+        changeCase.toProperCase();
+        console.log(changeCase.toProperCase());
+    }
 
-//  Given a string that is a list of things separated by a given string, as well as another string separator, return a string with the first separator changed to the second: "a,b,c" + "," + "/" → "a/b/c".
+//  5. Given a string that is a list of things separated by a given string, as well as another string separator, return a string with the first separator changed to the second: "a,b,c" + "," + "/" → "a/b/c".
+
+    var separatorChange = function(items, sepItems1, sepItems2) {
+
+        var message = "";
+        var sepArray = items.split(sepItems1);
+        var i = 0;
+
+        while(i < sepArray.length) {
+
+            var newChange = sepArray[i];
+            i++;
+            message += newChange + sepItems2;
+        }
+        return message;
+    }
 
 //  Number
-//  Format a number to use a specific number of decimal places, as for money: 2.1 → 2.10
+//  6. Format a number to use a specific number of decimal places, as for money: 2.1 → 2.10
 
+    var fixedDecimal = function(place){
+        var decimalPlace = place.toFixed(2);
+        return decimalPlace;
+    }
 
 //  Fuzzy-match a number: is the number above or below a number within a certain percent?
 
 
-//  Find the number of hours or days difference between two dates.
+//  8. Find the number of hours or days difference between two dates.
 
     var timePassed = function (startDate, endDate) {
         var fullDay = 1000 * 60 * 60 * 24;
@@ -45,6 +71,10 @@ var myLibrary = function() {
     };
 
 //  Given a string version of a number such as "42", return the value as an actual Number, such as 42.
+    var changeType = function(change){
+        var stringNumber = parseInt(change);
+        return stringNumber;
+    }
 
 //  Array
 //  Find the smallest value in an array that is greater than a given number.
@@ -60,6 +90,9 @@ var myLibrary = function() {
 
     return {
         "timePassed" : timePassed,
+        "fixedDecimal" : fixedDecimal,
+        "addCaps" : addCaps,
+        "separatorChange" : separatorChange,
     }
 }
 
@@ -68,5 +101,7 @@ var input = new myLibrary();
 
 // Outputs
 
-console.log(input.timePassed("January , 2014", "January 29, 2015") + " days since we started SDI ")
-
+console.log(input.timePassed("January 5, 2015", "January 29, 2015") + " days since we started SDI ")
+console.log(input.fixedDecimal(876.09743578));
+console.log(input.addCaps("i hope this works."));
+console.log(input.separatorChange("a,b,c", ",", "/"));
