@@ -4,21 +4,44 @@
     Making a library of code
  */
 
-//  Global Varibles
+//  Global Variables
 
 var myLibrary = function() {
 
 //  String Functions
 
-//  Does a string follow a 123-456-7890 pattern like a phone number?
+//  1. Does a string follow a 123-456-7890 pattern like a phone number?
+
+    var checkPhoneNumber = function(phoneNumber) {
+
+        var start = phoneNumber.indexOf ("-");
+        var end = phoneNumber.lastIndexOf("-");
+        var firstSet = phoneNumber.substring(0, start);
+        var secondSet = phoneNumber.substring(4, end);
+        var thirdSet = phoneNumber.substring(8, 12);
+        var numberCheck = firstSet + "-" + secondSet + "-" + + thirdSet;
+
+        if(phoneNumber === numberCheck) {
+            return true;
+        }	else {
+            return false;
+        }
+    };
 
 
 
 //  Does a string follow an aaa@bbb.ccc pattern like an email address?
 
 
-//  Is the string a URL? (Does it start with http: or https:?)
+//  3. Is the string a URL? (Does it start with http: or https:?)
 
+    var website = function(url){
+        if (url.substring(0,7) === "http://" || url.substring(0,8) === "https://") {
+            return true;
+        } else{
+            return false;
+        }
+    }
 
 //  4. Title-case a string (split into words, then uppercase the first letter of each word)
 
@@ -79,6 +102,25 @@ var myLibrary = function() {
 //  Array
 //  Find the smallest value in an array that is greater than a given number.
 
+    var howLittle = function (numberArray, number){
+        var largerNumber = [],
+            smallestNumber;
+
+        for (i = 0; i < numberArray.length; i++){
+            if (numberArray[i] > number) {
+                largerNumber.push(numberArray[i]);
+            }
+        }
+
+        smallestNumber = largerNumber [0];
+
+        for (j = 0; j < largerNumber.length; j++){
+            if (smallestNumber > largerNumber[j]);{
+                smallestNumber = largerNumber[j];
+            }
+        }
+        return (number + " is smaller than " + smallestNumber + ".");
+    };
 
 //  Find the total value of just the numbers in an array, even if some of the items are not numbers.
 
@@ -93,15 +135,23 @@ var myLibrary = function() {
         "fixedDecimal" : fixedDecimal,
         "addCaps" : addCaps,
         "separatorChange" : separatorChange,
+        "checkPhoneNumber" : checkPhoneNumber,
+        "changeType" : changeType,
+        "website" : website,
+        "howLittle" : howLittle
     }
-}
+};
 
-//  Inputs
 var input = new myLibrary();
+var numberArray = [8, 34, 98, 12, 56, 7, 10, 1, 14];
 
-// Outputs
 
-console.log(input.timePassed("January 5, 2015", "January 29, 2015") + " days since we started SDI ")
-console.log(input.fixedDecimal(876.09743578));
+
+console.log(input.timePassed("January 5, 2015", "January 29, 2015") + " days since we started SDI!");
+console.log(input.fixedDecimal(876.09743578) + " has been rounded down from 876.09743578.");
 console.log(input.addCaps("i hope this works."));
 console.log(input.separatorChange("a,b,c", ",", "/"));
+console.log(input.changeType("54"));
+console.log(input.website("http://www.pogo.com"));
+console.log(input.howLittle(numberArray, 14));
+console.log(input.checkPhoneNumber(407-679-0100) + " 407-679-0100 is the phone number to Full Sail.");
